@@ -38,20 +38,21 @@ function lengthOfFence($numberOfRailings) {
 }
 
 function runProg() {
-    if(isset($_POST)) {
-        $fenceLength = (int)$_POST["fenceLength"];
-        if ($fenceLength != 0) {
-            $info = calcRailsNeeded($fenceLength);
-            return railsNeeded($info);
+        if($_POST["fenceLength"] != NULL || $_POST["numberRailings"] != NULL) {
+            $fenceLength = (int)$_POST["fenceLength"];
+            if ($fenceLength != 0) {
+                $info = calcRailsNeeded($fenceLength);
+                return railsNeeded($info);
+            }
+            $numberOfRailings = (int)$_POST["numberRailings"];
+            if ($numberOfRailings != 0) {
+                return lengthOfFence($numberOfRailings);
+            }
         }
-        $numberOfRailings = (int)$_POST["numberRailings"];
-        if($numberOfRailings != 0) {
-            return lengthOfFence($numberOfRailings);
+        else {
+            echo "Please Enter a Value";
         }
-    }
-    else {
-        return "Please enter a value";
-    }
+
 }
 
 echo runProg();

@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require('../fencing.php');
+require('fencing.php');
 
 class StackTest extends TestCase {
 
