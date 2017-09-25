@@ -36,7 +36,7 @@ class StackTest extends TestCase {
 
     public function testlengthOfFenceSuccess() {
         $rails = 5;
-        $result = lengthOfFence($rails);
+        $result = CalcLengthOfFence($rails);
 
         $this->assertEquals("This number of railings will have a total length of " . 8.1, $result);
 
@@ -44,36 +44,36 @@ class StackTest extends TestCase {
 
     public function testlengthOfFenceHugeInput() {
         $rails = 10000;
-        $result = lengthOfFence($rails);
+        $result = CalcLengthOfFence($rails);
 
         $this->assertEquals("This number of railings will have a total length of " . 16000.1, $result);
     }
 
     public function testlengthOfFenceStringInput() {
         $rails = "hi";
-        $result = lengthOfFence($rails);
+        $result = CalcLengthOfFence($rails);
 
         $this->assertEquals("Sorry, Something Has Gone Wrong", $result);
     }
 
-    public function testrailsNeededSuccess() {
+    public function testrailsNeededStringThingSuccess() {
         $info = ['posts' => 7, 'rails' => 8, 'overshoot' => 1.5];
-        $result = railsNeeded($info);
+        $result = railsNeededStringThing($info);
         $expectedResult = "You need " . 8 . " railings and " . 7 . " posts, with a " . 1.5 . " overshoot";
 
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testRailsMalformedInputtingNotAString() {
-        $info = 'douche';
-        $result = railsNeeded($info);
+    public function testrailsNeededStringThingMalformedInputtingNotAString() {
+        $info = 'nocie';
+        $result = railsNeededStringThing($info);
 
         $this->assertEquals("Sorry, Something Has Gone Wrong", $result);
     }
 
-    public function testrailsNeededForArrayWithWrongKeyOrValues() {
+    public function testrailsNeededStringThingForArrayWithWrongKeyOrValues() {
         $info = [1, 2, 3, 4, 5, 6];
-        $result = railsNeeded($info);
+        $result = railsNeededStringThing($info);
 
         $this->assertEquals("Sorry, Something Has Gone Wrong", $result);
     }
