@@ -14,7 +14,7 @@ function calcRailsNeeded($fenceLength) {
             $info = ['posts' => $posts, 'rails' => $rails, 'overshoot' => $overshoot];
             return $info;
         } else {
-            return 0;
+            return "Sorry, Something Has Gone Wrong";
         }
 }
 
@@ -23,7 +23,7 @@ function railsNeeded($info) {
         return "You need " . $info['rails'] . " railings and " . $info['posts'] . " posts, with a " . $info['overshoot'] . " overshoot";
         $fenceLength = 0;
     } else {
-        return 0;
+        return "Sorry, Something Has Gone Wrong";
     }
 }
 
@@ -33,12 +33,11 @@ function lengthOfFence($numberOfRailings) {
         return "This number of railings will have a total length of " . $totalLength;
         $numberOfRailings = 0;
     } else {
-        return 0;
+        return "Sorry, Something Has Gone Wrong";
     }
 }
 
 function runProg() {
-        if($_POST["fenceLength"] != NULL || $_POST["numberRailings"] != NULL) {
             $fenceLength = (int)$_POST["fenceLength"];
             if ($fenceLength != 0) {
                 $info = calcRailsNeeded($fenceLength);
@@ -48,11 +47,6 @@ function runProg() {
             if ($numberOfRailings != 0) {
                 return lengthOfFence($numberOfRailings);
             }
-        }
-        else {
-            echo "Please Enter a Value";
-        }
-
 }
 
 echo runProg();

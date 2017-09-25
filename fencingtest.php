@@ -20,11 +20,18 @@ class StackTest extends TestCase {
         $this->assertEquals(['posts' => 6251, 'rails' => 6250, 'overshoot' => 0.1], $result);
     }
 
-    public function testcalrailsNeededMalfornmedString() {
+    public function testcalcrailsNeededMalfornmedString() {
         $fencelength = "hi";
         $result = calcRailsNeeded($fencelength);
 
-        $this->assertEquals(0, $result);
+        $this->assertEquals("Sorry, Something Has Gone Wrong", $result);
+    }
+
+    public function testcalcRailsNeededMincase() {
+        $fencelength = 1;
+        $result = calcRailsNeeded($fencelength);
+
+        $this->assertEquals(['posts' => 2, 'rails' => 1, 'overshoot' => 0.7], $result);
     }
 
     public function testlengthOfFenceSuccess() {
@@ -46,7 +53,7 @@ class StackTest extends TestCase {
         $rails = "hi";
         $result = lengthOfFence($rails);
 
-        $this->assertEquals(0, $result);
+        $this->assertEquals("Sorry, Something Has Gone Wrong", $result);
     }
 
     public function testrailsNeededSuccess() {
@@ -61,13 +68,13 @@ class StackTest extends TestCase {
         $info = 'douche';
         $result = railsNeeded($info);
 
-        $this->assertEquals(0, $result);
+        $this->assertEquals("Sorry, Something Has Gone Wrong", $result);
     }
 
     public function testrailsNeededForArrayWithWrongKeyOrValues() {
         $info = [1, 2, 3, 4, 5, 6];
         $result = railsNeeded($info);
 
-        $this->assertEquals(0, $result);
+        $this->assertEquals("Sorry, Something Has Gone Wrong", $result);
     }
 }
